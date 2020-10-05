@@ -1,0 +1,50 @@
+<html>
+<head>
+<script language = "Javascript">
+
+var number = 0;
+var picList = [ "images/slide1.jpg" , "images/slide2.jpg" , "images/slide3.jpg" , "images/slide4.jpg" , "images/slide5.jpg" , "images/slide6.jpg" ]
+	var clipList = ["sounds/slideaudio1.mp3", "sounds/slideaudio2.mp3", "sounds/slideaudio3.mp3", "sounds/slideaudio4.mp3", "sounds/slideaudio5.mp3", "sounds/slideaudio6.mp3"]
+function startShow()
+{
+	var picFrame= document.getElementById("picFrame").src= picList[number] ;
+	var clip= document.getElementById("myAudio").src= clipList [number] ;
+	var clip= document.getElementById("myAudio").play();
+
+	number = number + 1;
+		if(number == 6)
+	{
+		number = 0;
+	}
+
+}
+
+</script>
+</head> 
+
+<body bgcolor = "#B6D555"> 
+
+	<audio id="myAudio"> </audio>
+
+<center> 
+<font color="#3B2F08" style = "font-family:Candara">
+
+<h1> <strike>Javascript</strike> <i>Frog</i> Tester
+
+<br/>
+
+<img id = "picFrame" src = "images/slideo.jpg"/>
+
+<br/>
+<br/>
+
+<input type="button" value="Click Me" onClick="startShow()">
+
+<br/>
+<br/>
+
+<p> <a href="index.html">Click here</a> to return to my home page.
+
+</center>
+</body>
+</html>
