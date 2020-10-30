@@ -1,0 +1,56 @@
+<html>
+<head> 
+<script language = "Javascript">
+
+var answers = ["It is certain.", "Without a doubt.", "Yes - definitely.", "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.", "Yes.", "Signs point to yes.", "The path to the future splits in two; your fate depends on the actions you take.", "Reply hazy, try again.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Don't count on it.", "My sources say no.", "My reply is no.", "Outlook not so good.", "Very doubtful."]
+function magicFuture()
+{
+	var rand = -1;
+	var userQ = document.getElementById("question");
+	var magicAnswer = document.getElementById("answer"); 
+	
+	rand = Math.random()*answers.length; // 0 - 19 (inclusive)
+	rand = Math.floor(rand);
+	
+	//alert(userQ.value.length);
+	
+	if(userQ.value.length == 0)  //no value in the question textbox; no question has been input
+	{
+		magicAnswer.value = "Please type a question first.";
+	}
+	else
+	{
+		magicAnswer.value = answers[rand];
+		document.getElementById("player").play();
+	}
+}
+function reset()
+{
+	document.getElementById("answer").value = "";
+}
+
+</script>
+</head>
+
+<body background="images/texture.jpg">
+<font color="white">
+<center>
+
+<h1>Magic 8 Ball</h1>
+<br/>
+<img src= "https://www.vermontcountrystore.com/ccstore/v1/images/?source=/file/v436715391556442924/products/51327.main.png&height=500&width=500&quality=0.88" >
+<br/>
+<input id= "question" type= "text" size= "80" onClick= "reset()"/>
+<br/><br/>
+<input type= "button" value= "Find Your Answers" onClick= "magicFuture()"/>
+<br/><br/>
+<input id= "answer" type= "text" size= "80" readonly = true />
+
+<audio src= "sounds/ominous.mp3" id= "player">
+
+</center>
+<br/><br/><br/>
+<p> <a href="index.html">Click here</a> to return to my home page.
+
+</body>
+</html>
