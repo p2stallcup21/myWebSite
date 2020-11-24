@@ -1,0 +1,51 @@
+<html>
+<head>
+<script language="javaScript">
+
+function beginAnim()
+{
+	var myDude = document.getElementById("dude");
+	var xPos = myDude.style.left;
+	xPos = parseInt (xPos); //parse means cut it up, Int is Integer, so parseInt truncates xPos
+	xPos -= 2;
+	
+	if( xPos < 0 )  //he's off the screen
+	{
+		xPos = 900;
+	}
+	
+	myDude.style.left = xPos;
+	
+	var timer = setTimeout( "beginAnim()" , 12 );
+}
+
+</script>
+</head>
+<body bgcolor = "#150933">
+<font color = "#eae6f5">
+<center>
+
+<h1>My Animation</h1>
+
+<input type = "button" value = "Start" onClick="beginAnim()"/>
+
+<p> <a href = "index.html"> Click here </a> to return to my home page.
+
+</center>
+
+<div id="setting" style="position:absolute; top:125; left:100">
+<img src="images/anim1Bkgnd.jpg" width="800"/>
+</div>
+<div id="dude" style="position:absolute; top:350; left:900">
+<img src="images/walking1.gif" width = "150"/>
+</div>
+
+<div style="position:absolute; top:125; left:0">
+<img src= "images/curtain.jpg" width="100" height="500">
+</div>
+<div style="position:absolute; top:125; left:900">
+<img src="images/curtain.jpg" width="300" height="500">
+</div>
+
+</body>
+</html>
