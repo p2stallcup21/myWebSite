@@ -1,0 +1,105 @@
+<html>
+<head> 
+<script language="JavaScript">
+
+var partsOfSpeech = ["Enter a person's name.", "Enter an adjective (capitalized).", "Enter a part of the body.", "Enter another adjective.", "skip(name)", "skip(name)", "Enter a noun.", "Enter another adjective.", "Enter another noun.", "Enter a verb.", "Enter another adjective.", "Enter a plural noun.", "skip(name)", "Enter an emotion in adjective form.", "skip(plural noun)", "skip(name)", "Enter an amount of time with units.", "skip(name)", "skip(name)", "skip(adjective 1)"];
+var answers = new Array(partsOfSpeech.length); //creates an empty array the same length (same number of spaces available) as partsOfSpeech
+var story = [" had been swimming all their life, and had finally made it to the biggest swimming competition of the year: The ", " Wave. They dove into the water with excitement as the race started, eager to try and win—but before they could even get to the halfway point, they felt something wrap around their ", ". Suddenly, they were tugged sharply into the depths of the pool. As the water rushed by and the beast only went ", ", ", " thought to themselves, “Huh, the pool can’t be THIS deep, right?” Just as suddenly as it had grabbed them, the strange force released, and ", " found themselves floating at the bottom of a vast ocean, seafloor teeming with ", ". They turned slowly in their spot, curious where all the light was from, and saw something magnificent: a ", " metropolis sitting at the bottom of the sea. Eyes filled with ", ", they began ", " towards it. But before they could get very far, they saw a shape in the distance, growing closer at ", " speeds. It didn’t take long before they were able to make out what it was: a group of ", ", armoured for battle and carrying spears. For the first time in their journey, ", " began to feel ", ". The ", " surrounded ", " in ", ", their gazes promising violence, and the leader jabbed her weapon towards ", " without a second thought. ", " jolted awake with a start in their bed. They checked the clock; The ", " Wave didn’t start for another five hours. They were safe for now. " ];
+var count = 0;
+
+function prompt()
+{
+	// if this is the start, display the textbox and hide the story. 
+	// then display the first element of partsOfSpeech in the textbox. 
+	document.getElementById("userEnter").style.visibility = "visible"; 
+	document.getElementById("story").style.visibility = "hidden";
+	document.getElementById("response").value = partsOfSpeech[count];
+}
+
+
+function getWords()
+{
+	var wordBox = document.getElementById("response");
+	answers[count] = wordBox.value
+	
+	count++
+	
+	if( count == 4 )
+	{
+		count = 6
+	}
+	if( count == 12 )
+	{
+		count = 13
+	}
+	if( count == 14 )
+	{
+		count = 16
+	}
+	if( count == 17 )
+	{ 
+		count = 20
+	}
+	
+	if( count < partsOfSpeech.length ) 
+	{
+		prompt();
+	}
+	else
+	{
+		count = 0;
+		document.getElementById("story").innerHTML = displayStory();
+	}
+}
+
+function displayStory()
+{
+	var answer = "";
+	var i;
+	
+	
+	answers[4] = answers[0]
+	answers[5] = answers[0]
+	answers[12] = answers[0]
+	answers[15] = answers[0]
+	answers[17] = answers[0]
+	answers[18] = answers[0]
+	
+	answers[14] = answers[11]
+	
+	answers[19] = answers[1]
+	
+	
+	for ( i = 0; i < answers.length; i++)
+	{
+		answer = answer + answers[i]
+		answer = answer + story[i]
+	}
+	
+	// Make the story div visible, and the userEnter div hidden.		
+	document.getElementById("userEnter").style.visibility = "hidden";
+	document.getElementById("story").style.visibility = "visible";
+	
+	// return the variable answer.
+	return answer;
+}
+
+</script>
+</head>
+<body background="images/sea4.jpg">
+<font color="white">
+<center> 
+<h1>My MadLib!</h1>
+
+<input id="daButton" type="button" value="start" onClick="prompt()"/>
+</center>
+<div id="userEnter" style="position:absolute; left:200; top:100; visibility:hidden;">
+<input type = "text" size= "50" id="response" value="" onfocusout="getWords()"/></p> 
+</div>
+
+<div id="story" style="position:absolute; overflow:scroll; top:300; left:350; width:800; height:300; visibility:hidden">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+<div>
+
+</body>
+</html>
