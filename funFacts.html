@@ -1,0 +1,97 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1.
+2.
+3.
+4.
+5. 
+6.
+7.
+8 
+
+*/
+
+
+var group = ["-- Choose a Frog --", "Glass Frog", "Darwin's Frog", "North American Wood Frog", "Golden Poison Dart Frog", "Surinam Toad", "Wax Monkey Frog", "Goliath Frog", "Blue-Jeans Frog"];
+
+var facts = ["-- No frog selected --", "You can see the organs, bones, and muscles of the glass frog through its translucent skin.", "Male Darwin's frogs swallow newly-hatched tadpoles to grow up in the vocal sac for 60 days.", "The wood frog freezes itself completely during the winter. Its breathing and heartbeat even come to a complete stop.", "One gram of this frog's toxin can kill 100,000 people.", "Surinam eggs grow underneath a layer of skin on the mother's back, bursting through the skin to hatch.", "This frog secretes a wax to protect its skin.", "At over a foot long and 7 pounds, this West African frog is the largest in the world.", "Blue-jeans frogs have a red body and blue legs, earning them their blue-jeans name."];
+
+function loadData() //fills in the drop down for the selected object
+{
+	for(var i = 0; i < group.length; i++)
+    {
+        var daList = document.getElementById("frog");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+}
+
+// This function identifies which element from the drop down has been selected. It calls the getIndex function to acquire what the index of the selected item. Then it displays the corresponding element in the facts list. (This is diplayed in the textbox on the web page.)
+function start()
+{
+	// Write the code that stores the selected object in a var called names
+	var names = document.getElementById("frog");
+	
+	var daIndex = getIndex(names.value);
+	
+	//write code to display the element at daIndex in the facts array in the textbox called "funFact".
+	if( daIndex > -1 ) //valid selection was chosen
+	{
+		document.getElementById("funFact").value = facts[daIndex];
+	}
+	else //invalid selection was chosen
+	{
+		alert("Invalid selection");
+	}
+}
+
+// This function searches the group array for the element passed as a parameter and returns the index number for that element in the array.
+function getIndex(d)  //assigns "c" to var d
+{
+	//var answer = d + " there";
+	var answer = -1; //invalid index for an array
+	
+	//Write a for loop that will traverse your group array.
+	for( var i = 0 ; i < group.length ; i++ )
+	{
+		//if-statement that tests if the next element of group contains the variable d
+		if( group[i] == d ) // tests if the element at i equals the parameter
+		{
+			answer = i;
+		}
+	}
+	
+	return answer
+}
+
+
+
+</script>
+</head>
+<body onload="loadData()" bgcolor="green"> 
+<font color = white>
+<center>
+<h1>Frog Fun Facts</h1>
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="frog"></select>	</td>
+		<td>	<input id="funFact" type="text" size="110"/> </td>
+	</tr>
+</table>
+<br/><br/>
+
+<input type="button" value="click" onclick="start()"/>
+</center>
+</br></br></br>
+
+<p> <a href = "index.html"> Click here </a> to return to my home page.
+<p> All fun fact credits go to the article "<a href = "https://www.smithsonianmag.com/science-nature/14-fun-facts-about-frogs-180947089/">14 Fun Facts About Frogs</a>," written by Julie Mianecki for Smithsonian Magazine.
+
+</body>
+</html>
