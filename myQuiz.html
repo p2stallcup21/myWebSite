@@ -1,0 +1,121 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1. Format a table for questions and answers. 
+2. Create a button to start the function. 
+3. Write code to display the items in the questions array in order. 
+4. Store the user's "answer". 
+5. Test the user-inputed answer against the answer array value with the same index as the question. 
+6. Update the value of the score depending on whether the answers were the same or not. 
+7. Clear user answer box when displaying final question. 
+8. Code stopping point to loop once all questions have been asked. 
+
+*/
+
+
+var questions = ["Who is the first person Harry meets at Platform 9 ¾ in the first book? (first and last name)", "What is the second Harry Potter book called? (following 'Harry Potter and')", "What device do Harry and his friends use to save Sirius Black in The Prisoner of Azkaban?", "What is the wizard tournament in the fourth book called?", "Where do Harry and his friends break into in the fifth book?", "Who is “the Half-Blood Prince”? (first and last name)", "Which adult helps Harry and his friends sneak back into Hogwarts in the final book? (first and last name)", "Who is Harry Potter’s first kiss? (first and last name)", "How many Hogwarts Houses are there?", "What item definitively kills Sirius Black?"]
+
+var answers = ["Molly Weasley", "The Chamber of Secrets", "a time-turner", "The Triwizard Tournament", "The Ministry of Magic", "Severus Snape", "Aberforth Dumbledore", "Cho Chang", "four", "The Veil"]
+
+var index = -1;
+
+var score = 0
+
+// Create code in displayQuestion that will display the contents of the questions array, one element at a time. After the last element is displayed, the program should display the first element again.
+function displayQuestion()
+{
+	index++;
+	
+	if( index < 10 )
+	{
+		/*
+		var ques = document.getElementById("question");
+		ques.text = questions[index];
+		*/
+		document.getElementById("question").value = questions[index];
+	}
+	else 
+	{ 
+		if( score > 10 )
+			score = 10
+		document.getElementById("question").value = "";
+		alert("You've finished the quiz! Your final score is "+score+" out of 10."); 
+	}
+}
+
+// This function will first acquire the user's answer (from the textbox with the ID "answer". Then this function will pass that to the checkAnswer function (note: that there is a parameter.) The checkAnswer will return a true or a false. If that function returns true, then the score variable will increase by 1, and an alert should pop up saying "Correct" or something positive. If the checkAnswer function comes back false, then score doesn't increase but an alert should announce "incorect." or something similar. 
+function updateScore()
+{
+	var userInput = document.getElementById("answer"); 
+	
+	var userAnswer = checkAnswer(userInput.value);
+	
+	if( index >= 10 )
+	{
+		alert("Refresh to restart the quiz.")
+	}
+	else if( userAnswer == true )
+	{
+		alert("Correct!");
+		score++;
+	}
+	else if( userAnswer == false )
+	{
+		alert("Incorrect! The correct answer is "+answers[index]);	
+	}
+	else 
+	{
+		alert("Error"); 
+	}
+}
+
+// This function takes a parameter which will be the users answer. If what the user has submitted the correct answer, this method should return true. Otherwise it should return false. 
+function checkAnswer(ans)
+{
+	daIndex = false;
+	
+	for( var i = 0 ; i < questions.length ; i++ )
+	{
+		if( answers[i] == ans )
+		{
+			daIndex = true;
+		}
+	}
+	
+	return daIndex;
+}
+
+
+</script>
+</head>
+<body background="images/hogwarts.jpg"> 
+<font color="white">
+<center>
+<h1>Harry Potter Quiz</h1>
+<h2>Instructions</h2>
+<p>• Once typing your answer, click anywhere outside the text box to see whether you were correct or incorrect.
+<p>• Immediately after closing the correct/incorrect popup, click "Next Question."
+<p>• Include articles in your answer (ex: "The ___" or "a ____") as well as proper capitalization.
+<p>• Answers are case, spelling, and space sensitive, so be mindful of those! (ex: no hanging space after your answer)
+<br/><br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<input id="question" type="text" size="100" readonly=true />	</td>
+	</tr>
+	<tr height = "12"><td></td>
+	</tr>
+	<tr>
+		<td>	<input id="answer" type="text" size="100" onfocusout="updateScore()"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="Next Question" onclick="displayQuestion()"/>
+</center>
+
+</br> </br>
+<p> <a href="index.html">Click here</a> to return to my home page.
+
+</body>
+</html>
